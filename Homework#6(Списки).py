@@ -6,5 +6,6 @@ x = [x for x in g if x not in h]
 x.extend([x for x in h if x not in g])
 
 print(x)
+
 print("Количество уникальных чисел:", len(x))
 
