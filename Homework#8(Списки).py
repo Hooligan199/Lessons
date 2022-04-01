@@ -14,6 +14,3 @@ for i in range(0, len(high_list)):
         break
 
 
-
-#g = [213, 198, 181, 173, 154, 150, 110, 105, 102, 101, 101, 101]
-#x = [x for x in range(1, len(g)) if g[x - 1] == g[x]]
