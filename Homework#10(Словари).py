@@ -12,5 +12,4 @@ for i in b:
     if c.get(i, None) is not None:
         c[i] += 1
 
-
 print(c)
