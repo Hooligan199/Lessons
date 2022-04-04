@@ -12,12 +12,11 @@ def square(square_side):
     :return: (square_perimetr(8), square_area(4),
      square_diagonal(2.8284271247461903))
     """
-    square_perimetr = square_side * 4
-    square_area = square_side * square_side
-    square_diagonal = square_side * math.sqrt(2)
 
-    return print((square_perimetr, square_area, square_diagonal))
+    return (square_side * 4, square_side * square_side,
+           square_side * math.sqrt(2))
 
 
 if __name__ == '__main__':
-    square(square_side)
+    print(square(square_side))
+
