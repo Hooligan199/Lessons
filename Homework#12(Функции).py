@@ -15,20 +15,11 @@ def arithmetic(x, y, operation):
     :return: 4
     """
 
-    if operation == "*":
-        return x * y
+    dict_of_operations = {"*": int.__mul__(x, y), "/": int.__truediv__(x, y),
+                          "-": int.__sub__(x, y), "+": int(x + y)}
 
-    elif operation == "/":
-        return x / y
-
-    elif operation == "+":
-        return x + y
-
-    elif operation == "-":
-        return x - y
-
-    else:
-        return "Неизвестная операция"
+    return \
+        dict_of_operations.get(operation, "Неизвестная операция")
 
 
 if __name__ == '__main__':
