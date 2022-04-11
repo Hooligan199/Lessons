@@ -2,22 +2,20 @@ global_dict = {'user': "12345", 'qwerty': "pass", 'aBcD': "qwerty123"}
 
 
 def login(func):
-    def wrapper(*args, **kwargs):
-        if authenticate():
-            return func(*args, **kwargs)
+    def wrapper():
+        if check_password(account_login, account_password):
+            return func()
         return False
     return wrapper
 
 
+@login
 def authenticate() -> bool:
     return True
 
 
-@login
-def check_password(log: str, password: str) -> bool:
-    if global_dict.get(log, None) == password:
-        return True
-    return False
+def check_password(account_login: str, account_password: str) -> bool:
+    return global_dict.get(account_login, None) == account_password
 
 
 if __name__ == '__main__':
@@ -25,7 +23,7 @@ if __name__ == '__main__':
         account_login = input("Login:")
         account_password = input("Password:")
 
-        if check_password(account_login, account_password) is True:
+        if authenticate() is True:
             print("Вы в системе!")
             break
 
