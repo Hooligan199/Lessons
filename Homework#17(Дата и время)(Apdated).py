@@ -5,7 +5,7 @@ just_x = None
 
 
 def login(func):
-    def wrapper():
+    def wrapper(account_login=None, account_password=None):
         if check_password(account_login, account_password):
             return func()
         return False
@@ -14,6 +14,8 @@ def login(func):
 
 @login
 def authenticate() -> bool:
+    if login:
+        return False
     return True
 
 
@@ -36,28 +38,21 @@ def one_more_time():
 
         if i == 3 and authenticate() is False:
             print("На этом все!")
+            run_one_more_time_timer()
+
+
+def run_one_more_time_timer():
+    just_x = datetime.now()
+
+    print("До след попытки осталось {} минут".format(
+        just_x + timedelta(minutes=5) - just_x))
+
+    DEFAULT_TIMER = Timer(5.0, one_more_time)
+    # Таймер сделал специально небольшим чтобы долго не ждать
+    DEFAULT_TIMER.start()
 
 
 if __name__ == '__main__':
-    DEFAULT_TIMER = Timer(10.0, one_more_time)
-    # Таймер сделал специально небольшим чтобы долго не ждать
-    for i in range(4):
-        account_login = input("Login:")
-        account_password = input("Password:")
-
-        if authenticate() is True:
-            print("Вы в системе!")
-            break
-
-        elif i < 3:
-            print("Не правильное Имя или Пароль"
-                  "\n" f"У вас осталось {3 - i} попыток")
-
-        if i == 3 and authenticate() is False:
-            print("Попытки истекли!")
-            just_x = datetime.now()
-            print("До след попытки осталось {} минут".format(
-                just_x + timedelta(minutes=5) - just_x))
-            DEFAULT_TIMER.start()
+    one_more_time()
 
 
