@@ -27,7 +27,6 @@ def check_password(account_login: str, account_password: str) -> bool:
     try:
         return global_dict[account_login] == account_password
     except KeyError:
-        print("Error")
         raise UserDoesNotExist
 
 
