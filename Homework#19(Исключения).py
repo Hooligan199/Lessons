@@ -25,18 +25,13 @@ def authenticate() -> bool:
 
 def check_password(account_login: str, account_password: str) -> bool:
     try:
-        global_dict[account_login] == account_password
+        return global_dict[account_login] == account_password
     except KeyError:
+        print("Error")
         raise UserDoesNotExist
-    else:
-        if global_dict[account_login] == account_password:
-            return True
-        else:
-            return False
 
 
 def one_more_time(account_login, account_password, JUST_X):
-
     if authenticate(account_login, account_password) is True:
         print("Вы в системе!")
         pass
@@ -53,7 +48,6 @@ def one_more_time(account_login, account_password, JUST_X):
 
 
 def from_terminal(JUST_X):
-
     account_login = input("Login:")
     account_password = input("Password:")
     JUST_X += 1
