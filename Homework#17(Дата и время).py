@@ -13,16 +13,11 @@ def login(func):
 
 @login
 def authenticate():
-    if login(authenticate()) is False:
-        global just_x
-        just_x = datetime.now()
-        return False, just_x
-    else:
-        return True
+    return True
 
 
 def check_password(account_login: str, account_password: str) -> bool:
-    return global_dict.get(account_login, None) == account_password
+    return global_dict.get(account_login) == account_password
 
 
 if __name__ == '__main__':
