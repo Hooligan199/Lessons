@@ -20,8 +20,6 @@ def machine_choice(user_data: str):
     if machine_pick in winning_combinations[user_data]:
         print("Player WIN!")
         return repeater()
-
-
     else:
         print("Computer WIN!")
         return repeater()
