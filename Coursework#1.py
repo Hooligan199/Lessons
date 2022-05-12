@@ -17,9 +17,16 @@ def machine_choice(user_data: str):
     machine_pick = game_dict[random_number]
     print(machine_pick)
 
-    if machine_pick in winning_combinations[user_data]:
+    if machine_pick in winning_combinations[user_data] and machine_pick != \
+            winning_combinations[user_data]:
         print("Player WIN!")
         return repeater()
+
+    elif machine_pick not in winning_combinations[user_data] and \
+            machine_pick == user_data:
+        print("It's a draw!")
+        return repeater()
+
     else:
         print("Computer WIN!")
         return repeater()
