@@ -44,6 +44,7 @@ def take_currency(dict_resp_currency):
 с другими функциями и переменными, но что-то пошло не так и она не изменилась)      
 """
 
+
 def take_population(dict_resp_population):
     print(dict_resp_population['data']['populationCounts'][0]['value'])
 
