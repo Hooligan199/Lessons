@@ -8,7 +8,10 @@ def live_currency(live_list, currency_now):
         return live_list[1]['sale']
     else:
         return float(live_list[2]['sale']) * float(live_list[0]['sale'])
-
+"""
+Здесь я не стал изобретать велосипед поэтому я беру из списка словарей по 
+индексу(зная что Приват все время отдает данные в такой последовательности)
+"""
 
 def live_currency_dated(date_dict, currency_now):
     intermediate_dict = {}
@@ -24,6 +27,22 @@ def live_currency_dated(date_dict, currency_now):
             pass
     print(intermediate_dict)
     return intermediate_dict.get(currency_now.upper(), "PrivatBank SUCKS!")
+"""
+Двойной try нужен в этом случае для того чтобы не ловить KeyError на ключе 
+"currency" т.к. API Привата не постоянный на некоторых датах (2017,2018,
+2019...) он выдает совершенно разные результаты(в некоторых словарях просто 
+не было ключа "currency", а все доступные валюта есть ниже в списке 
+"avaliable_currency_dict_date" и может случиться так что в списке эта валюта 
+есть а по факту на какой-то дате ее нету)
+
+И от сюда же сразу вопрос,если у нам есть "достоверная информация" про вывод 
+валюты(или другой информации)(и мы знаем что она всегда по ключам одинаковая),
+то лучше вывести эти ключи в лист и делать проверку
+(если валюты не существует из доступных) до того как сделать запрос
+на сервер(чтоб не занимать поток) или уже делать проверку после получения данных?   
+"""
+
+
 
 if __name__ == '__main__':
     avaliable_currency_dict_live = ["USD", "EUR", "BTC"]
@@ -49,6 +68,7 @@ if __name__ == '__main__':
             raise SystemError
         else:
             live_list = response_currency.json()
+            print(live_list)
             print(currency_now.upper())
             print(live_currency(live_list, currency_now))
 
