@@ -3,6 +3,12 @@ import requests
 URL_POPULATION = "https://countriesnow.space/api/v0.1/countries/population/cities"
 URL_CURRENCY = "https://countriesnow.space/api/v0.1/countries/currency"
 
+"""
+Дисклеймер
+
+Вводить города нужно по старым назаваниям(Kiev, Lvov, Dnipropetrovsk)
+А также данные по наслению только за 2013г
+"""
 
 def checking_errors(dict_resp_population, dict_resp_currency):
     if dict_resp_population['error'] is not True:
