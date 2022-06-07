@@ -15,7 +15,6 @@ def checking_errors(dict_resp_population, dict_resp_currency):
         return take_city(dict_resp_population, dict_resp_currency)
     else:
         print(f"Invalid city name:{user_input}")
-        pass
 
 
 def take_city(dict_resp_population, dict_resp_currency):
